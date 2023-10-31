@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.profile-container {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    gap: 50px;
+}
+
+.user-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.fa-user {
+    margin: 5px 0;
+    padding: 10px 0;
+}
+
+.display-username {
+    font-size: 24px;
+    margin: 5px 0;
+}
+
+.display-title {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 5px 0;
+    color: grey;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.info-container {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.display-name, .display-email, .display-phone, .display-adress {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    margin-bottom: 10px;
+    gap: 60px;
+}
+
+span {
+    margin-right: 10px;
+}

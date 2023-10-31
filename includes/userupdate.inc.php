@@ -8,8 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         require_once "dbh.inc.php";
 
-        $query = "INSERT INTO users (username, email, pwd) VALUES 
-        (:username, :email, :pwd);";
+        $query = "UPDATE users SET username = :username, email = :email, pwd = :pwd WHERE id = 1;";
 
         $stmt = $pdo->prepare($query);
 
@@ -30,5 +29,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 else {
-    header("Location: ../login.php");
+    header("Location: ../profile.php");
 }
