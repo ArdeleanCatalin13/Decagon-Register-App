@@ -50,7 +50,7 @@ input[type="password"] {
     outline: none;
 }
 
-#email-error {
+.error {
     position: absolute;
     color: red;
     font-size: 12px;
