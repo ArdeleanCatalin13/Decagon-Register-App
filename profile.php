@@ -1,41 +1,38 @@
 <?php
-session_start();
+// session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $userLogin = $_POST["userlogin"];
-  $userEmail = $_POST["useremail"];
-  $userPwd = $_POST["userpwd"];
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//   $userLogin = $_POST["userlogin"];
+//   $userEmail = $_POST["useremail"];
+//   $userPwd = $_POST["userpwd"];
   
-  try {
-      require_once "includes/dbh.inc.php";
+//   try {
+//       require_once "includes/dbh.inc.php";
 
-      $query = "SELECT * FROM users 
-      WHERE username = :userlogin AND email = :useremail AND pwd = :userpwd;";
+//       $query = "SELECT * FROM users 
+//       WHERE username = :userlogin AND email = :useremail AND pwd = :userpwd;";
 
-      $stmt = $pdo->prepare($query);
+//       $stmt = $pdo->prepare($query);
 
-      $stmt->bindParam(":userlogin", $userLogin);
-      $stmt->bindParam(":useremail", $userEmail);
-      $stmt->bindParam(":userpwd", $userPwd);
+//       $stmt->bindParam(":userlogin", $userLogin);
+//       $stmt->bindParam(":useremail", $userEmail);
+//       $stmt->bindParam(":userpwd", $userPwd);
 
-      $stmt->execute();
+//       $stmt->execute();
 
-      $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//       $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-      $pdo = null;
-      $stmt = null;
+//       $pdo = null;
+//       $stmt = null;
 
-  } catch (PDOException $e) {
-      die("Query failed: " . $e->getMessage());
-  }
-}
-else {
-  header("Location: ./login.php");
-}
-?>
-
-
-
+//   } catch (PDOException $e) {
+//       die("Query failed: " . $e->getMessage());
+//   }
+// }
+// else {
+//   header("Location: ./login.php");
+// }
+?> 
 
 </body>
 </html>
@@ -103,7 +100,9 @@ else {
         <a href="editprofile.php">
             <button>Edit</button>
         </a>
+        <form action="includes/logout.inc.php" method="post"><button>Logout</button></form>
       </div>
     </div>
 </body>
 </html>
+

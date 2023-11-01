@@ -1,7 +1,8 @@
 <?php
-session_start();
-?>
+require_once 'includes/config_session.inc.php';
+require_once 'includes/login_view.inc.php';
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,25 +15,23 @@ session_start();
 </head>
 <body>
     <div class="login-container">
-        <form class="login-form" action="profile.php" method="post">
+        <form class="login-form" action="includes/login.inc.php" method="post">
             <h2>Login</h2>
             <div class="input-container">
                 <label for="username">Username</label>
-                <input type="text" id="userlogin" name="userlogin" placeholder="Enter username" onkeyup="validateUsername()" required>
-                <span id="error"></span>
-            </div>
-            <div class="input-container">
-                <label id="email-label" for="email">Email</label>
-                <input type="email" id="useremail" name="useremail" placeholder="Enter email" onkeyup="validateEmail()" required>
-                <span id="email-error"></span>
+                <input type="text" id="username" name="username" placeholder="Enter username">
             </div>
             <div class="input-container">
                 <label for="pwd">Password</label>
-                <input type="password" id="userpwd" name="userpwd" placeholder="Enter password" required>
-                <span id="error"></span>
+                <input type="password" id="pwd" name="pwd" placeholder="Enter password">
             </div>
             <button type="submit">Login</button>
         </form>
+
+        <?php
+        checkLoginErrors();
+        ?>
+
     </div>
 </body>
 </html>
