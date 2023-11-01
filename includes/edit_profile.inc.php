@@ -7,8 +7,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     try {
         require_once "dbh.inc.php";
-        require_once "register_model.inc.php";
-        require_once "register_contr.inc.php";
+        require_once "edit_profile_model.inc.php";
+        require_once "edit_profile_contr.inc.php";
 
         $errors = [];
 
@@ -28,27 +28,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors["emailTaken"] = "Email already taken!";
         }
 
+        $result = getUser($pdo, $username);
+
         require_once "config_session.inc.php";
 
         if ($errors) {
-            $_SESSION["errorsSignup"] = $errors;
+            $_SESSION["errorsEdit"] = $errors;
 
-            $signupData = [
-                "username" => $username,
-                "email" => $email,
-            ];
-            $_SESSION["signupData"] = $signupData;
-
-            header("Location: ../index.php");
+            header("Location: ../editprofile.php");
             die();
         }
 
-        createUser($pdo, $email, $pwd, $username);
-
-        header("Location: ../profile.php");
+        if (isset($_SESSION["userId"])) {
+            $userId = $_SESSION["userId"];
+            updateUserData($pdo, $userId, $username, $email, $pwd);
+            $_SESSION["userUsername"] = htmlspecialchars($username);
+        }
 
         $pdo = null;
         $stmt = null;
+
+        header("Location: ../profile.php");
 
         die();
     } catch (PDOException $e) {
@@ -56,6 +56,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 else {
-    header("Location: ../index.php");
-    die();
+    header("Location: ../profile.php");
 }

@@ -1,37 +1,25 @@
 <?php
-// session_start();
 
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//   $userLogin = $_POST["userlogin"];
-//   $userEmail = $_POST["useremail"];
-//   $userPwd = $_POST["userpwd"];
-  
-//   try {
-//       require_once "includes/dbh.inc.php";
+require_once "includes/dbh.inc.php";
+require_once 'includes/config_session.inc.php';
+require_once 'includes/profile_model.inc.php';
+require_once 'includes/profile_view.inc.php';
 
-//       $query = "SELECT * FROM users 
-//       WHERE username = :userlogin AND email = :useremail AND pwd = :userpwd;";
+if (isset($_SESSION["userId"])) {
+  $userId = $_SESSION["userId"];
+  $profileData = getUserData($pdo, $userId);
 
-//       $stmt = $pdo->prepare($query);
+  if ($profileData) {
+    $userEmail = $profileData["email"];
+    $userCreated = $profileData["created_at"];
+} else {
+    echo 'No data found!';
+}
 
-//       $stmt->bindParam(":userlogin", $userLogin);
-//       $stmt->bindParam(":useremail", $userEmail);
-//       $stmt->bindParam(":userpwd", $userPwd);
-
-//       $stmt->execute();
-
-//       $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-//       $pdo = null;
-//       $stmt = null;
-
-//   } catch (PDOException $e) {
-//       die("Query failed: " . $e->getMessage());
-//   }
-// }
-// else {
-//   header("Location: ./login.php");
-// }
+} else {
+  header("Location: login.php");
+  die();
+}
 ?> 
 
 </body>
@@ -50,53 +38,11 @@
       <div class="user-container">
         <img src=""></img>
         <i class="fa-solid fa-user fa-2xl"></i>
-
-        <?php
-
-        if(empty($results)) {
-          echo "<div>";
-          echo "<p>Username, email or password is incorrect!</p>";
-          echo "</div>";
-          } else {
-            foreach ($results as $row) {
-              ?>
-              <div class="display-username"><span><?php echo htmlspecialchars($row["username"]); ?></span></div>
-              
-
-              <?php
-          }
-          }
-        
-
-        ?>
-
-        
+        <div class="display-username"><span><?php outputUsername(); ?></span></div>
         <div class="display-title"><span>WebDev</span></div>
       </div>
       <div class="info-container">
-      <?php
-
-      if(empty($results)) {
-        echo "<div>";
-        echo "<p>Username, email or password is incorrect!</p>";
-        echo "</div>";
-        } else {
-          foreach ($results as $row) {
-            ?>
-            <div class="display-email"><span>Email</span><span><?php echo htmlspecialchars($row["email"]); ?></span></div>
-
-            
-
-            <?php
-        }
-        }
-
-
-      ?>
-        <!-- <div class="display-name"><span>Username</span><span>Catalin</span></div>
-        <div class="display-email"><span>Email</span><span>fip@jukmuh.al</span></div>
-        <div class="display-phone"><span>Phone</span><span>(239) 816-9029</span></div>
-        <div class="display-adress"><span>Adress</span><span>Bay Area, San Francisco, CA</span></div> -->
+      <?php outputData($userEmail, $userCreated); ?>
         <a href="editprofile.php">
             <button>Edit</button>
         </a>
