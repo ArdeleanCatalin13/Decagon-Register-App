@@ -19,6 +19,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isEmailInvalid($email)) {
             $errors["invalidEmail"] = "Invalid email used!";
         }
+        
+        if (isUsernameInvalid($username)) {
+            $errors["invalidUsername"] = "Username too short!";
+        }
+        
+        if (isPasswordInvalid($pwd)) {
+            $errors["invalidPassword"] = "Password is not strong enough!";
+        }
 
         if (isUsernameTaken($pdo, $username)) {
             $errors["usernameTaken"] = "Username already taken!";
@@ -45,10 +53,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         createUser($pdo, $email, $pwd, $username);
 
+        $result = getUser($pdo, $username);
+
+        $newSessionId = session_create_id();
+        $sessionId = $newSessionId . "_" . $result["id"];
+        session_id($sessionId);
+
+        $_SESSION["userId"] = $result["id"];
+        $_SESSION["userUsername"] = htmlspecialchars($result["username"]);
+
+        $_SESSION["last_regeneration"] = time();
+
         header("Location: ../profile.php");
 
         $pdo = null;
         $stmt = null;
+        unset($_SESSION["signupData"]);
 
         die();
     } catch (PDOException $e) {

@@ -12,5 +12,5 @@ function outputUsername() {
 
 function outputData(string $userEmail, string $userCreated) {
     echo '<div class="display-email"><span>Email</span><span>' . htmlspecialchars($userEmail) . '</span></div>';
-    echo '<div class="display-email"><span>Account created</span><span>' . htmlspecialchars($userCreated) . '</span></div>';
+    echo '<div class="display-time"><span>Account created</span><span>' . htmlspecialchars($userCreated) . '</span></div>';
 }

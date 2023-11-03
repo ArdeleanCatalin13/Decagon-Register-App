@@ -12,9 +12,7 @@ if (isset($_SESSION["userId"])) {
   if ($profileData) {
     $userEmail = $profileData["email"];
     $userCreated = $profileData["created_at"];
-} else {
-    echo 'No data found!';
-}
+  } 
 
 } else {
   header("Location: login.php");
@@ -39,14 +37,13 @@ if (isset($_SESSION["userId"])) {
         <img src=""></img>
         <i class="fa-solid fa-user fa-2xl"></i>
         <div class="display-username"><span><?php outputUsername(); ?></span></div>
-        <div class="display-title"><span>WebDev</span></div>
       </div>
       <div class="info-container">
-      <?php outputData($userEmail, $userCreated); ?>
-        <a href="editprofile.php">
-            <button>Edit</button>
-        </a>
-        <form action="includes/logout.inc.php" method="post"><button>Logout</button></form>
+        <?php outputData($userEmail, $userCreated); ?>
+        <div class="display-buttons">
+          <form action="editprofile.php" method="post"><button>Edit</button></form>
+          <form action="includes/logout.inc.php" method="post"><button>Logout</button></form>
+        </div>
       </div>
     </div>
 </body>

@@ -24,10 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors["usernameTaken"] = "Username already taken!";
         }
 
-        if (isEmailRegistered($pdo, $email)) {
-            $errors["emailTaken"] = "Email already taken!";
-        }
-
         $result = getUser($pdo, $username);
 
         require_once "config_session.inc.php";

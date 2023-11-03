@@ -25,14 +25,6 @@ function isUsernameTaken(object $pdo, string $username) {
     }
 }
 
-function isEmailRegistered(object $pdo, string $email) {
-    if (getEmail($pdo, $email)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 function updateUserData(object $pdo, string $userId, string $username, string $email, string $pwd){
     setUpdatedData($pdo, $userId, $username, $email, $pwd);
 }

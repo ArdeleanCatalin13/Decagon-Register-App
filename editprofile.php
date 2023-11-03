@@ -22,15 +22,11 @@ require_once 'includes/edit_profile_view.inc.php';
             </div>
             <label for="email">Email:</label>
             <div class="input-container">
-                <input type="email" name="email" id="email" value="johndoe@example.com">
+                <input type="text" name="email" id="email" value="johndoe@example.com">
             </div>
             <label for="pwd">Password:</label>
             <div class="input-container">
-                <input type="text" name="pwd" id="pwd" value="(239) 816-9029">
-            </div>
-            <label for="adress">Address:</label>
-            <div class="input-container">
-                <input type="text" id="adress" value="Bay Area, San Francisco, CA">
+                <input type="password" name="pwd" id="pwd" value="(239) 816-9029">
             </div>
             <button type="submit" id="save-button">Save changes</button>
         </form>

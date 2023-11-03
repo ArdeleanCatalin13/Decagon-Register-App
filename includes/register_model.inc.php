@@ -21,6 +21,16 @@ function getEmail(object $pdo, string $email) {
     return $result;
 }
 
+function getUser(object $pdo, string $username) {
+    $query = "SELECT * FROM users WHERE username = :username;";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":username", $username);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result;
+}
+
 function setUser(object $pdo, string $email, string $pwd, string $username) {
       
     $query = "INSERT INTO users (username, email, pwd) VALUES 
