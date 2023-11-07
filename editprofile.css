@@ -14,30 +14,82 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
     padding: 20px;
-    width: 300px;
+    width: 400px;
+    max-width: 100%;
+    overflow: hidden;
 }
 
-h1 {
+.edit-form {
+    padding: 30px 40px;	
+}
+
+.edit-form h1 {
     font-size: 24px;
-}
-
-.profile-info {
-    text-align: left;
-    margin: 10px 0;
+    margin: 0 0 20px 0;
 }
 
 .input-container {
-    display: flex;
-    align-items: center;
+    text-align: left;
+    margin-bottom: 10px;
+	padding-bottom: 20px;
+	position: relative;
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin-top: 5px;
-    margin-bottom: 15px;
+.input-container label {
+    display: inline-block;
+	margin-bottom: 5px;
+}
+
+.input-container input{
+    border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-family: inherit;
+	font-size: 14px;
+	padding: 10px;
+	width: 100%;
+}
+
+.input-container input:focus {
+    outline: 0;
+	border-color: #777;
+}
+
+.input-container.success input {
+	border-color: #2ecc71;
+}
+
+.input-container.error input {
+    border-color: #e74c3c;
+}
+
+.input-container i{
+    visibility: hidden;
+    position: absolute;
+	top: 42px;
+    right: 0px;
+}
+
+.input-container.success i.fa-circle-check {
+	color: #2ecc71;
+	visibility: visible;
+}
+
+.input-container.error i.fa-circle-exclamation {
+    color: #e74c3c;
+	visibility: visible;
+}
+
+.input-container.error small {
+	visibility: visible;
+}
+
+.input-container small{
+    color: #e74c3c;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+    visibility: hidden;
 }
 
 button {

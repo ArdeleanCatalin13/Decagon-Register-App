@@ -10,25 +10,36 @@ require_once 'includes/edit_profile_view.inc.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="editprofile.css">
+    <script src="https://kit.fontawesome.com/7eb3d96340.js" crossorigin="anonymous"></script>
+    <script defer src="editprofile.js"></script>
     <title>Edit Profile</title>
 </head>
 <body>
-    <div class="profile-container">
-        <h1>Edit Profile</h1>
-        <form class="profile-info" action="includes/edit_profile.inc.php" method="post">
-            <label for="name">Name:</label>
+    <div class="profile-container">    
+        <form class="edit-form" id="edit-form" action="includes/edit_profile.inc.php" method="post">
+            <h2>Edit Profile</h2>
             <div class="input-container">
-                <input type="text" name="username" id="name" value="John Doe">
+                <label for="name">Name:</label>
+                <input type="text" name="username" id="username">
+                <i class="fa-solid fa-circle-check fa-lg" style="color: #16b913;"></i>
+                <i class="fa-solid fa-circle-exclamation fa-lg" style="color: #ca0c0c;"></i>
+                <small>Error Message</small>
             </div>
-            <label for="email">Email:</label>
             <div class="input-container">
-                <input type="text" name="email" id="email" value="johndoe@example.com">
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email">
+                <i class="fa-solid fa-circle-check fa-lg" style="color: #16b913;"></i>
+                <i class="fa-solid fa-circle-exclamation fa-lg" style="color: #ca0c0c;"></i>
+                <small>Error Message</small>
             </div>
-            <label for="pwd">Password:</label>
             <div class="input-container">
-                <input type="password" name="pwd" id="pwd" value="(239) 816-9029">
+                <label for="pwd">Password:</label>
+                <input type="password" name="pwd" id="pwd">
+                <i class="fa-solid fa-circle-check fa-lg" style="color: #16b913;"></i>
+                <i class="fa-solid fa-circle-exclamation fa-lg" style="color: #ca0c0c;"></i>
+                <small>Error Message</small>
             </div>
-            <button type="submit" id="save-button">Save changes</button>
+            <button type="submit">Save changes</button>
         </form>
         <?php
         checkLoginErrors();

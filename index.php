@@ -11,12 +11,13 @@ require_once 'includes/login_view.inc.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <script defer src="app.js"></script>
+    <script src="https://kit.fontawesome.com/7eb3d96340.js" crossorigin="anonymous"></script>
+    <script defer src="index.js"></script>
     <title>Register</title>
 </head>
 <body>
     <div class="register-container">
-        <form class="register-form" action="includes/register.inc.php" method="post">
+        <form class="register-form" id="register-form" action="includes/register.inc.php" method="post">
             <h2>Register</h2>
            
             <?php
